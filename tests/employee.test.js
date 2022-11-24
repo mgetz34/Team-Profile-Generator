@@ -9,14 +9,33 @@ describe('Employee', () => {
             expect(employee.email).toBe("bob@hnk.com");
         });
 
-        it('should throw an error if provided no arguments', () => {
-            const cb = () => new Employee();
-            expect(cb).toThrow();
+        it('should be able to set new employee name', () => {
+            const employee = new Employee("bob", 14, "bob@hnk.com");
+            expect(employee.name).toBe("bob");
         });
-        it("should throw an error if not provided an id", () => {
-            const cb = new Employee("bob");
-            const err = new Error("Expected paramater 'id' to be a non-negative number");
-            expect(cb).toThrowError(err);
+        it("should be able to set new employee id", () => {
+            const employee = new Employee("bob", 14, "bob@hnk.com");
+            expect(employee.id).toBe(14);
+        });
+        it("should be able to set new employee email", () => {
+            const employee = new Employee("bob", 14, "bob@hnk.com");
+            expect(employee.email).toBe("bob@hnk.com");
+        });
+        it("should be able to get name via getName()", () => {
+            const employee = new Employee("bob", 14, "bob@hnk.com");
+            expect(getName()).toBe(this.name);
+        });
+        it("should be able to get id via getId()", () => {
+            const employee = new Employee("bob", 14, "bob@hnk.com");
+            expect(getName()).toBe(this.name);
+        });
+        it("should be able to get email via getEmail()", () => {
+            const employee = new Employee("bob", 14, "bob@hnk.com");
+            expect(getName()).toBe(this.name);
+        });
+        it("getRole() should return Employee", () => {
+            const employee = new Employee("bob", 14, "bob@hnk.com");
+            expect(getName()).toBe(this.name);
         });
     });
 });
