@@ -1,22 +1,32 @@
-//Acceptance Criteria
-// GIVEN a command - line application that accepts user input
-// WHEN I am prompted for my team members and their information
-// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-// WHEN I click on an email address in the HTML
-// THEN my default email program opens and populates the TO field of the email with the address
-// WHEN I click on the GitHub username
-// THEN that GitHub profile opens in a new tab
-// WHEN I start the application
-// WHEN I enter the team manager’s name, employee ID, email address, and office number
-// WHEN I select the engineer option
-// WHEN I select the intern option
-// THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 const inquirer = require('inquirer');
 const fs = require('fs');
-const Employee = require('./lib/employee');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
+
+const generateManager = ({ name, id, email, officeNumber }) =>
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Hi! My name is ${name}</h1>
+    <p class="lead">My Id is: ${id}.</p>
+    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
+    <ul class="list-group">
+      <li class="list-group-item">My Email is ${email}</li>
+      <li class="list-group-item">Office Number: ${officeNumber}</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>`;
 
 inquirer
     .prompt([
@@ -24,43 +34,31 @@ inquirer
             // THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
             type: 'input',
             name: 'name',
-            message: 'What is your name?',
+            message: 'What is your manager Name?',
         },
         {
-            // THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
+            // THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
             type: 'input',
-            name: 'location',
-            message: 'Where are you from?',
+            name: 'id',
+            message: 'What is your manager Id?',
         },
         {
-            // THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
+            // THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
             type: 'input',
-            name: 'hobby',
-            message: 'What is your favorite hobby?',
+            name: 'email',
+            message: 'What is your manager Email?',
         },
         {
-            // WHEN I decide to finish building my team
-            // THEN I exit the application, and the HTML is generated
+            // THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
             type: 'input',
-            name: 'food',
-            message: 'What is your favorite food?',
-        },
-        {
-            type: 'input',
-            name: 'github',
-            message: 'Enter your GitHub Username',
-        },
-        {
-            type: 'input',
-            name: 'linkedin',
-            message: 'Enter your LinkedIn URL.',
+            name: 'officeNumber',
+            message: 'What is your manager Office Number?',
         },
     ])
     .then((answers) => {
-        const htmlPageContent = generateHTML(answers);
-
+        const htmlPageContent = generateManager(answers);
         fs.writeFile('index.html', htmlPageContent, (err) =>
-            err ? console.log(err) : console.log('Successfully created index.html!')
+            err ? console.log(err) : console.log('Successfully added manager to index.html!')
         );
     });
 
