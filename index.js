@@ -3,6 +3,7 @@ const fs = require('fs');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
+var employeeArr = [];
 
 const generateManager = ({ name, id, email, officeNumber }) =>
     `<!DOCTYPE html>
@@ -14,17 +15,20 @@ const generateManager = ({ name, id, email, officeNumber }) =>
   <title>Document</title>
 </head>
 <body>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Hi! My name is ${name}</h1>
-    <p class="lead">My Id is: ${id}.</p>
-    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
-    <ul class="list-group">
-      <li class="list-group-item">My Email is ${email}</li>
-      <li class="list-group-item">Office Number: ${officeNumber}</li>
-    </ul>
+ <div class="row row-cols-1 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+    <h5 class="card-title"> Manager </h5> 
+    <h5 class="card-title">${name}</h5>
+    <div class="card-body">
+    <img src= "assets/images/icons8-businessman-skin-type-1-100.png" alt="manager"/>
+        <p class="card-text">${id}</p>
+        <div>${email}</div>
+        <div>${officeNumber}</div>
+      </div>
+     </div>
+    </div>
   </div>
-</div>
 </body>
 </html>`;
 
