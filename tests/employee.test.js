@@ -23,19 +23,19 @@ describe('Employee', () => {
         });
         it("should be able to get name via getName()", () => {
             const employee = new Employee("bob", 14, "bob@hnk.com");
-            expect(getName()).toBe(this.name);
+            expect(employee.getName()).toBe("bob");
         });
         it("should be able to get id via getId()", () => {
             const employee = new Employee("bob", 14, "bob@hnk.com");
-            expect(getName()).toBe(this.name);
+            expect(employee.getId()).toBe(14);
         });
         it("should be able to get email via getEmail()", () => {
             const employee = new Employee("bob", 14, "bob@hnk.com");
-            expect(getName()).toBe(this.name);
+            expect(employee.getEmail()).toBe("bob@hnk.com");
         });
         it("getRole() should return Employee", () => {
             const employee = new Employee("bob", 14, "bob@hnk.com");
-            expect(getName()).toBe(this.name);
+            expect(employee.getRole()).toBe('Employee');
         });
     });
 });
