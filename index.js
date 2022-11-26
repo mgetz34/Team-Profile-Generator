@@ -131,7 +131,7 @@ function createTeam() {
             } else {
                 return;
             }
-        })
+        });
 };
 
 
@@ -214,12 +214,11 @@ function buildTeam() {
         if (employee.getRole() === "Intern") {
             employeeContent += generateIntern(employee);
         }
-
-        else {
-            const htmlPageContent = mainTemplate(employeeContent);
-            fs.writeFile('index.html', htmlPageContent, (err) =>
-                err ? console.log(err) : console.log('Successfully created team profile index.html!')
-            )
-        };
     };
-}
+
+    const htmlPageContent = mainTemplate(employeeContent);
+    fs.writeFile('index.html', htmlPageContent, (err) =>
+        err ? console.log(err) : console.log('Successfully created team profile index.html!')
+
+    )
+};
