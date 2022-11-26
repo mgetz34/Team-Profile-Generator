@@ -206,17 +206,20 @@ function buildTeam() {
         if (employee.getRole() === "Manager") {
             employeeContent += generateManager(employee);
         }
+
         if (employee.getRole() === "Engineer") {
             employeeContent += generateEngineer(employee);
         }
+
         if (employee.getRole() === "Intern") {
             employeeContent += generateIntern(employee);
         }
+
         else {
             const htmlPageContent = mainTemplate(employeeContent);
             fs.writeFile('index.html', htmlPageContent, (err) =>
                 err ? console.log(err) : console.log('Successfully created team profile index.html!')
-            );
+            )
         };
     };
-};
+}
