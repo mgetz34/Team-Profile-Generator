@@ -30,7 +30,7 @@ const generateManager = ({ name, id, email, officeNumber }) =>
     <h5 class="card-title">Name: ${name}</h5>
     <div class="card-body">
     <img src= "assets/images/icons8-businessman-skin-type-1-100.png" alt="manager"/>
-        <p class="card-text">ID: ${id}</p>
+        <p class="card-text badge">ID: ${id}</p>
         <div><a href= "mailto: ${email}">${email}</a></div>
         <div>Office Number: ${officeNumber}</div>
       </div>
@@ -43,8 +43,8 @@ const generateEngineer = ({ name, id, email, gitHub }) =>
     <h5 class="card-title">Engineer</h5> 
     <h5 class="card-title">Name: ${name}</h5>
     <div class="card-body">
-    <img src="https://img.icons8.com/external-nawicon-outline-color-nawicon/64/null/external-engineer-labour-day-nawicon-outline-color-nawicon.png" alt="engieer"/>
-        <p class="card-text">ID: ${id}</p>
+    <img src="https://img.icons8.com/external-nawicon-outline-color-nawicon/64/null/external-engineer-labour-day-nawicon-outline-color-nawicon.png" alt="engieer" class="img"/>
+        <p class="card-text badge">ID: ${id}</p>
         <div><a href= "mailto: ${email}">${email}</a></div>
         <div><a href="https://github.com/${gitHub}" target="_blank">Github</a></div>
       </div>
@@ -57,8 +57,8 @@ const generateIntern = ({ name, id, email, school }) =>
     <h5 class="card-title">Intern</h5> 
     <h5 class="card-title">Name: ${name}</h5>
     <div class="card-body">
-    <img src="https://img.icons8.com/ios-filled/50/null/internship.png" alt="intern"/>
-        <p class="card-text">ID: ${id}</p>
+    <img src="https://img.icons8.com/ios-filled/50/null/internship.png" alt="intern" class="img"/>
+        <p class="card-text badge">ID: ${id}</p>
         <div><a href= "mailto: ${email}">${email}</a></div>
         <div>School: ${school}</div>
       </div>
@@ -156,7 +156,7 @@ function addEngineer() {
             {
                 type: 'input',
                 name: 'gitHub',
-                message: "What is your engineer's Git-Hub profile url?",
+                message: "What is your engineer's Git-Hub username?",
             },
         ])
         .then((answers) => {
