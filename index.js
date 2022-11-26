@@ -18,7 +18,7 @@ const mainTemplate = (body) =>
 </head>
 <header class="header">Team Profile Generator</header>
 <body class="body">
- <div class="row row-cols-1 row-cols-md-2 g-4">${body}
+ <div class="row row-cols-1 row-cols-lg-2 g-4">${body}
   </div>
 </body>
 </html>`;
