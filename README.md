@@ -30,7 +30,7 @@ This Application is covered by a: ![License](https://img.shields.io/badge/licens
 
 ## Description
 
-The purpose of this project is develop a webpage to display a basic outline of a team's info, including links to theit GitHub and Email addresses. The application will run using the command line interface only utilizing node.js, inquirer, and jest testing criteria. An HTML page with bootstrap styling elements will be dynamically genarated using the application and answering promps to each team member; Manager, Engineer, and Intern. This application utilizes Node.js and OOP, including unit testing.
+The purpose of this project is develop a webpage to display a basic outline of a team's info, including links to their GitHub and Email addresses. The application will run using the command line interface only utilizing node.js, inquirer, and jest testing criteria. An HTML page with bootstrap styling elements will be dynamically genarated using the application and answering promps to each team member; Manager, Engineer, and Intern. This application utilizes Node.js and OOP, including unit testing.
 
 ## Installation
 
