@@ -13,10 +13,11 @@ const mainTemplate = (body) =>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./dist/style.css" />
   <title>Document</title>
 </head>
-<header>Team Profile Generator</header>
-<body>
+<header class="header">Team Profile Generator</header>
+<body class="body">
  <div class="row row-cols-1 row-cols-md-2 g-4">${body}
   </div>
 </body>
@@ -26,12 +27,12 @@ const generateManager = ({ name, id, email, officeNumber }) =>
     `<div class="col">
     <div class="card">
     <h5 class="card-title">Manager</h5> 
-    <h5 class="card-title">${name}</h5>
+    <h5 class="card-title">Name: ${name}</h5>
     <div class="card-body">
     <img src= "assets/images/icons8-businessman-skin-type-1-100.png" alt="manager"/>
-        <p class="card-text">${id}</p>
-        <div>${email}</div>
-        <div>${officeNumber}</div>
+        <p class="card-text">ID: ${id}</p>
+        <div>Email: ${email}</div>
+        <div>Office Number: ${officeNumber}</div>
       </div>
      </div>
     </div>`;
@@ -40,12 +41,12 @@ const generateEngineer = ({ name, id, email, gitHub }) =>
     `<div class="col">
     <div class="card">
     <h5 class="card-title">Engineer</h5> 
-    <h5 class="card-title">${name}</h5>
+    <h5 class="card-title">Name: ${name}</h5>
     <div class="card-body">
     <img src="https://img.icons8.com/external-nawicon-outline-color-nawicon/64/null/external-engineer-labour-day-nawicon-outline-color-nawicon.png" alt="engieer"/>
-        <p class="card-text">${id}</p>
-        <div>${email}</div>
-        <div>${gitHub}</div>
+        <p class="card-text">ID: ${id}</p>
+        <div>Email: ${email}</div>
+        <div>GitHub: ${gitHub}</div>
       </div>
      </div>
     </div>`;
@@ -53,13 +54,13 @@ const generateEngineer = ({ name, id, email, gitHub }) =>
 const generateIntern = ({ name, id, email, school }) =>
     `<div class="col">
     <div class="card">
-    <h5 class="card-title">Engineer</h5> 
-    <h5 class="card-title">${name}</h5>
+    <h5 class="card-title">Intern</h5> 
+    <h5 class="card-title">Name: ${name}</h5>
     <div class="card-body">
     <img src="https://img.icons8.com/ios-filled/50/null/internship.png" alt="intern"/>
-        <p class="card-text">${id}</p>
-        <div>${email}</div>
-        <div>${school}</div>
+        <p class="card-text">ID: ${id}</p>
+        <div>Email: ${email}</div>
+        <div>School: ${school}</div>
       </div>
      </div>
     </div>`;
@@ -121,14 +122,14 @@ function createTeam() {
             },
         ])
         .then((answers) => {
-            if (answers.prompt(engineer) === "yes") {
+            if (answers.engineer === "yes") {
                 addEngineer();
-            } else if (answers.prompt(intern) === "yes") {
+            } else if (answers.intern === "yes") {
                 addIntern();
-            } else if (answers.prompt(complete) === "yes") {
+            } else if (answers.complete === "yes") {
                 buildTeam();
             } else {
-                createTeam();
+                return;
             }
         })
 };
@@ -195,7 +196,7 @@ function addIntern() {
             createTeam();
         });
 
-}
+};
 
 function buildTeam() {
 
@@ -211,11 +212,11 @@ function buildTeam() {
         if (employee.getRole() === "Intern") {
             employeeContent += generateIntern(employee);
         }
-        else return;
+        else {
+            const htmlPageContent = mainTemplate(employeeContent);
+            fs.writeFile('index.html', htmlPageContent, (err) =>
+                err ? console.log(err) : console.log('Successfully created team profile index.html!')
+            );
+        };
     };
-
-    const htmlPageContent = mainTemplate(employeeContent);
-    fs.writeFile('index.html', htmlPageContent, (err) =>
-        err ? console.log(err) : console.log('Successfully created team profile index.html!')
-    );
-}
+};
