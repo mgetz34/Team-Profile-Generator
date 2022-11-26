@@ -104,7 +104,6 @@ function createTeam() {
                 message: "Would you like to add an Engineer?",
                 //if yes call addEngineer function
                 //if no move below
-
             },
             {
                 type: 'input',
@@ -122,9 +121,18 @@ function createTeam() {
             },
         ])
         .then((answers) => {
-
+            if (answers.prompt(engineer) === "yes") {
+                addEngineer();
+            } else if (answers.prompt(intern) === "yes") {
+                addIntern();
+            } else if (answers.prompt(complete) === "yes") {
+                buildTeam();
+            } else {
+                createTeam();
+            }
         })
 };
+
 
 function addEngineer() {
     inquirer
