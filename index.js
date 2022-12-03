@@ -94,44 +94,44 @@ inquirer
         createTeam();
     });
 
+
 function createTeam() {
     //inquire prompt asking what memebers to add to the team 
-    //build, add, or done
+    //added optionsArr so user can select what they'd like to do next
+    const optionsArr = [
+        {
+            name: "add an Engineer"
+        },
+        {
+            name: "add an Intern"
+
+        },
+        {
+            name: "Complete the team"
+        }];
+
     inquirer
         .prompt([
             {
-                type: 'input',
-                name: 'engineer',
-                message: "Would you like to add an Engineer?",
-                //if yes call addEngineer function
-                //if no move below
-            },
-            {
-                type: 'input',
-                name: 'intern',
-                message: "Would you like to add an Intern?",
-                //if yes call addIntern function
-                //if no move below
-            },
-            {
-                type: 'input',
-                name: 'complete',
-                message: "Would you like to complete the team?",
-                //if yes call buildTeam function
-                //if no re-call createTeam function
-            },
-        ])
-        .then((answers) => {
-            if (answers.engineer === "yes") {
-                addEngineer();
-            } else if (answers.intern === "yes") {
-                addIntern();
-            } else if (answers.complete === "yes") {
-                buildTeam();
-            } else {
-                return;
+                type: 'list',
+                name: 'proceed',
+                message: "Would you like to do?",
+                //added choices and changed to list type, name:proceed
+                choices: optionsArr
             }
-        });
+        ])
+        //added .then statement to send user to proper function based on input
+        .then((data) => {
+            if (data.proceed === "add an Engineer") {
+                addEngineer();
+            }
+            if (data.proceed === "add an Intern") {
+                addIntern();
+            }
+            if (data.proceed === "Complete the team") {
+                buildTeam();
+            }
+        })
 };
 
 
