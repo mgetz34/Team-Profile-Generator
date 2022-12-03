@@ -164,7 +164,7 @@ function addEngineer() {
             employeeArr.push(engineer);
             createTeam();
         });
-}
+};
 
 function addIntern() {
     inquirer
