@@ -97,19 +97,7 @@ inquirer
 
 function createTeam() {
     //inquire prompt asking what memebers to add to the team 
-    //added optionsArr so user can select what they'd like to do next
-    const optionsArr = [
-        {
-            name: "add an Engineer"
-        },
-        {
-            name: "add an Intern"
-
-        },
-        {
-            name: "Complete the team"
-        }];
-
+    //added choices as an arroy of strings so user can select what they'd like to do next
     inquirer
         .prompt([
             {
@@ -117,7 +105,7 @@ function createTeam() {
                 name: 'proceed',
                 message: "Would you like to do?",
                 //added choices and changed to list type, name:proceed
-                choices: optionsArr
+                choices: ["add an Engineer", "add an Intern", "Complete the team"]
             }
         ])
         //added .then statement to send user to proper function based on input
